@@ -77,3 +77,41 @@ SELECT course_name,
        CASE WHEN course_id IN (SELECT course_id FROM "OpenCourse" WHERE month LIKE '%07') THEN '○' ELSE '×' END as "7月",
        CASE WHEN course_id IN (SELECT course_id FROM "OpenCourse" WHERE month LIKE '%08') THEN '○' ELSE '×' END as "8月"
 FROM "CourseMaster"
+
+-- CASE式の中で集約関数(CASE式)を使う、CASE式は入れ子で書ける
+SELECT
+       std_id,
+       CASE
+              WHEN COUNT(*) = 1 THEN MAX(club_id)
+              ELSE MAX (
+                     CASE
+                            WHEN main_club_flg = 'Y' THEN club_id
+                            ELSE NULL
+                     END
+              )
+       END AS mina_club
+FROM
+       "StudentClub"
+GROUP BY
+       std_id;
+
+-- 上記のクエリを冗長に書くと下になる
+-- MEMO HAVING:集合関数+GROUP BY HAVING [条件式]、GROUP BYで集計後に条件抽出を行う
+-- MEMO UNION: SELECT ~ UNION SELECT ~
+SELECT
+       std_id,
+       MAX(club_id) AS main_club
+FROM
+       "StudentClub"
+GROUP BY
+       std_id
+HAVING
+       COUNT(*) = 1
+UNION
+SELECT
+       std_id,
+       club_id AS main_club
+FROM
+       "StudentClub"
+WHERE
+       main_club_flg = 'Y';
