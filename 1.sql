@@ -47,6 +47,14 @@ SELECT  pref_name
        ,SUM( CASE WHEN sex = '2' THEN population ELSE 0 END) AS cnt_f
 FROM "PopTbl2"
 GROUP BY  pref_name;
+
+-- UPDATE + CASEでの条件分岐
+UPDATE "Salaries"
+SET salary = CASE WHEN salary >= 300000 THEN salary * 0.9 
+                  WHEN salary >= 250000 AND salary < 280000 THEN salary * 1.2 
+                  ELSE salary END;
+
+-- MEMO カラム(col3)の最後はカンマ入れない SELECT col1,col2,col3 FROM ~
 -- MEMO サブクエリ内のテーブル呼出は、クエリ内で呼出していたらそのまま使える(FROM "CourseMaster" AS CM)
 SELECT CM.course_name,
        CASE WHEN (SELECT COUNT(*) FROM "OpenCourse" AS OC WHERE CM.course_id = OC.course_id AND OC.month LIKE '%06' ) > 0 THEN '○' ELSE '×' END as "6月",
