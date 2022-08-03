@@ -139,3 +139,39 @@ FROM
        "StudentClub"
 WHERE
        main_club_flg = 'Y';
+
+-- 演習1-1
+SELECT key, MAX(x,y) FROM "Greatests";
+SELECT key, MAX(x,y,z) FROM "Greatests";
+
+-- 演習1-2
+-- MEMO GROUP BY colは'col'と囲まないこと
+SELECT 
+CASE WHEN SEX = 1 THEN '男'
+WHEN SEX = 2 THEN '女'
+ELSE 'その他' END AS '性別',
+SUM(population) AS '全国',
+SUM(CASE WHEN pref_name = '徳島' THEN population ELSE 0 END) AS '徳島',
+SUM(CASE WHEN pref_name = '香川' THEN population ELSE 0 END) AS '香川',
+SUM(CASE WHEN pref_name = '愛媛' THEN population ELSE 0 END) AS '愛媛',
+SUM(CASE WHEN pref_name = '高知' THEN population ELSE 0 END) AS '高知',
+SUM(CASE WHEN pref_name = '高知' THEN population
+WHEN pref_name = '香川' THEN population
+WHEN pref_name = '愛媛' THEN population
+WHEN pref_name = '徳島' THEN population
+ELSE 0 END) AS '四国'
+FROM "PopTbl2"
+GROUP BY 性別;
+
+-- 演習1-3
+-- col名'Order'は予約語ダメ
+SELECT 
+key, 
+MAX(x,y,z),
+CASE WHEN key = 'B' THEN 1 
+WHEN key = 'A' THEN 2
+WHEN key = 'D' THEN 3
+WHEN key = 'C' THEN 4
+ELSE NULL END AS 'O'
+FROM "Greatests"
+ORDER BY O;
