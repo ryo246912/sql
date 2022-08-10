@@ -188,4 +188,81 @@ NOT EXISTS(
   WHEN step_nbr <= 1 THEN '完了'
   ELSE '待機'
   END
-)
+);
+
+-- ALL()及びANY()
+-- SQLiteではWHERE内では使えない？
+SELECT
+  *
+FROM
+  "ArrayTbl"
+WHERE
+  1 = ALL (
+    col1,
+    col2,
+    col3,
+    col4,
+    col5,
+    col6,
+    col7,
+    col8,
+    col9,
+    col10
+  );
+SELECT
+  *
+FROM
+  "ArrayTbl"
+WHERE
+  9 = ANY(
+    col1,
+    col2,
+    col3,
+    col4,
+    col5,
+    col6,
+    col7,
+    col8,
+    col9,
+    col10
+  );
+
+-- ANYの代わりにINでもいい
+SELECT
+  *
+FROM
+  "ArrayTbl"
+WHERE
+  9 IN (
+    col1,
+    col2,
+    col3,
+    col4,
+    col5,
+    col6,
+    col7,
+    col8,
+    col9,
+    col10
+  );
+
+-- すべてがNULLの行を抽出←ALL(col1,col2・・・) = NULLはダメ
+-- NOTE:・COALESCE(col1,col2,・・・)は(最低2つ以上？)の引数のうちNULLではない最初の引数を返す
+-- NOTE:そのため2つ以上の引数がどっちもNULLなら帰り値もNULLになることはある
+SELECT
+  *
+FROM
+  "ArrayTbl"
+WHERE
+  COALESCE (
+    col1,
+    col2,
+    col3,
+    col4,
+    col5,
+    col6,
+    col7,
+    col8,
+    col9,
+    col10
+  ) IS NULL;
