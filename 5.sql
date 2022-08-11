@@ -192,6 +192,8 @@ NOT EXISTS(
 
 -- ALL()及びANY()
 -- SQLiteではWHERE内では使えない？
+-- NOTE:・SQLiteではANY・SOME・ALL演算子は使えない
+-- NOTE:ANY→IN()、ALL→NOT IN()で対応する
 SELECT
   *
 FROM
