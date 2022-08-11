@@ -268,3 +268,57 @@ WHERE
     col9,
     col10
   ) IS NULL;
+
+-- 演習5-1
+-- これはvalがオール1以外でも抽出されるため、設問に対して100%な回答ではない
+-- NOT EXISTSと自己結合
+SELECT
+  *
+FROM
+  "ArrayTbl2" AS A1
+WHERE
+  NOT EXISTS (
+    SELECT
+      *
+    FROM
+      "ArrayTbl2" AS A2
+    WHERE
+      A1.key = A2.key
+      AND val <> NULL
+  );
+
+-- valがオール1のものを抽出
+-- NOTE:NULLがある行の場合は、別途条件式を書くことを意識する
+SELECT
+  *
+FROM
+  "ArrayTbl2" AS A1
+WHERE
+  NOT EXISTS (
+    SELECT
+      *
+    FROM
+      "ArrayTbl2" AS A2
+    WHERE
+      A1.key = A2.key
+      AND (val <> 1 OR val IS NULL)
+  );
+
+-- 演習5-2
+
+SELECT
+  *
+FROM
+  "Numbers" AS M1
+WHERE
+  num > 1
+  AND NOT EXISTS (
+    SELECT
+      *
+    FROM
+      "Numbers" AS M2
+    WHERE
+      M1.num > M2.num
+      AND M2.num > 1
+      AND 0 = M1.num % M2.num
+  )
