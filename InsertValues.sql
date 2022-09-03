@@ -217,3 +217,105 @@ INSERT INTO "SalesHistory" (sale_date,item_no,quantity) VALUES ('2018-10-03',10,
 INSERT INTO "SalesHistory" (sale_date,item_no,quantity) VALUES ('2018-10-03',30,12);
 INSERT INTO "SalesHistory" (sale_date,item_no,quantity) VALUES ('2018-10-04',20,22);
 INSERT INTO "SalesHistory" (sale_date,item_no,quantity) VALUES ('2018-10-04',30,7);
+
+INSERT INTO "SeqTbl1" (seq,name) VALUES (1,'ディック');
+INSERT INTO "SeqTbl1" (seq,name) VALUES (2,'アン');
+INSERT INTO "SeqTbl1" (seq,name) VALUES (3,'ライル');
+INSERT INTO "SeqTbl1" (seq,name) VALUES (4,'カー');
+INSERT INTO "SeqTbl1" (seq,name) VALUES (5,'カー');
+
+INSERT INTO "SeqTbl2" (seq,name) VALUES (1,'ディック');
+INSERT INTO "SeqTbl2" (seq,name) VALUES (2,'アン');
+INSERT INTO "SeqTbl2" (seq,name) VALUES (4,'ライル');
+INSERT INTO "SeqTbl2" (seq,name) VALUES (5,'カー');
+INSERT INTO "SeqTbl2" (seq,name) VALUES (8,'カー');
+
+INSERT INTO "SeqTbl3" (seq,name) VALUES (3,'ディック');
+INSERT INTO "SeqTbl3" (seq,name) VALUES (4,'アン');
+INSERT INTO "SeqTbl3" (seq,name) VALUES (5,'ライル');
+INSERT INTO "SeqTbl3" (seq,name) VALUES (6,'カー');
+INSERT INTO "SeqTbl3" (seq,name) VALUES (7,'カー');
+
+INSERT INTO "SeqTbl4" (seq,name) VALUES (3,'ディック');
+INSERT INTO "SeqTbl4" (seq,name) VALUES (4,'アン');
+INSERT INTO "SeqTbl4" (seq,name) VALUES (7,'ライル');
+INSERT INTO "SeqTbl4" (seq,name) VALUES (8,'カー');
+INSERT INTO "SeqTbl4" (seq,name) VALUES (10,'カー');
+
+INSERT INTO "Graduates" (name,income) VALUES ('サンプトン',400000);
+INSERT INTO "Graduates" (name,income) VALUES ('マイク',30000);
+INSERT INTO "Graduates" (name,income) VALUES ('ホワイト',20000);
+INSERT INTO "Graduates" (name,income) VALUES ('アーノルド',20000);
+INSERT INTO "Graduates" (name,income) VALUES ('スミス',20000);
+INSERT INTO "Graduates" (name,income) VALUES ('ロレンス',15000);
+INSERT INTO "Graduates" (name,income) VALUES ('ハドソン',15000);
+INSERT INTO "Graduates" (name,income) VALUES ('ケント',10000);
+INSERT INTO "Graduates" (name,income) VALUES ('ベッカー',10000);
+INSERT INTO "Graduates" (name,income) VALUES ('スコット',10000);
+
+INSERT INTO "Nulltbl" (col_1) VALUES (NULL);
+
+INSERT INTO "Students" (student_id,dpt,sbmt_date) VALUES (100,'理学部','2018-10-10');
+INSERT INTO "Students" (student_id,dpt,sbmt_date) VALUES (101,'理学部','2018-09-22');
+INSERT INTO "Students" (student_id,dpt,sbmt_date) VALUES (102,'文学部',NULL);
+INSERT INTO "Students" (student_id,dpt,sbmt_date) VALUES (103,'文学部','2018-09-10');
+INSERT INTO "Students" (student_id,dpt,sbmt_date) VALUES (200,'文学部','2018-09-22');
+INSERT INTO "Students" (student_id,dpt,sbmt_date) VALUES (201,'工学部',NULL);
+INSERT INTO "Students" (student_id,dpt,sbmt_date) VALUES (202,'経済学部','2018-09-25');
+
+INSERT INTO "TestResults" (student_id,class,sex,score) VALUES (1,'A','男',100);
+INSERT INTO "TestResults" (student_id,class,sex,score) VALUES (2,'A','女',100);
+INSERT INTO "TestResults" (student_id,class,sex,score) VALUES (3,'A','女',49);
+INSERT INTO "TestResults" (student_id,class,sex,score) VALUES (4,'A','男',30);
+INSERT INTO "TestResults" (student_id,class,sex,score) VALUES (5,'B','女',100);
+INSERT INTO "TestResults" (student_id,class,sex,score) VALUES (6,'B','男',92);
+INSERT INTO "TestResults" (student_id,class,sex,score) VALUES (7,'B','男',80);
+INSERT INTO "TestResults" (student_id,class,sex,score) VALUES (8,'B','男',80);
+INSERT INTO "TestResults" (student_id,class,sex,score) VALUES (9,'B','女',10);
+INSERT INTO "TestResults" (student_id,class,sex,score) VALUES (10,'C','男',92);
+INSERT INTO "TestResults" (student_id,class,sex,score) VALUES (11,'C','男',80);
+INSERT INTO "TestResults" (student_id,class,sex,score) VALUES (12,'C','女',21);
+INSERT INTO "TestResults" (student_id,class,sex,score) VALUES (13,'D','女',100);
+INSERT INTO "TestResults" (student_id,class,sex,score) VALUES (14,'D','女',0);
+INSERT INTO "TestResults" (student_id,class,sex,score) VALUES (15,'D','女',0);
+
+INSERT INTO "Teams" (member,team_id,status) VALUES ('ジョー',1,'待機');
+INSERT INTO "Teams" (member,team_id,status) VALUES ('ケン',1,'出勤中');
+INSERT INTO "Teams" (member,team_id,status) VALUES ('ミック',1,'待機');
+INSERT INTO "Teams" (member,team_id,status) VALUES ('カレン',2,'出勤中');
+INSERT INTO "Teams" (member,team_id,status) VALUES ('キース',2,'休暇');
+INSERT INTO "Teams" (member,team_id,status) VALUES ('ジャン',3,'待機');
+INSERT INTO "Teams" (member,team_id,status) VALUES ('ハート',3,'待機');
+INSERT INTO "Teams" (member,team_id,status) VALUES ('ディック',3,'待機');
+INSERT INTO "Teams" (member,team_id,status) VALUES ('ベス',4,'待機');
+INSERT INTO "Teams" (member,team_id,status) VALUES ('アレン',5,'出勤中');
+INSERT INTO "Teams" (member,team_id,status) VALUES ('ロバート',5,'休暇');
+INSERT INTO "Teams" (member,team_id,status) VALUES ('ケーガン',5,'待機');
+
+INSERT INTO "Materials" (center,receive_date,material) VALUES ('東京','2018-4-01','錫');
+INSERT INTO "Materials" (center,receive_date,material) VALUES ('東京','2018-4-12','亜鉛');
+INSERT INTO "Materials" (center,receive_date,material) VALUES ('東京','2018-5-17','アルミニウム');
+INSERT INTO "Materials" (center,receive_date,material) VALUES ('東京','2018-5-20','亜鉛');
+INSERT INTO "Materials" (center,receive_date,material) VALUES ('大阪','2018-4-20','銅');
+INSERT INTO "Materials" (center,receive_date,material) VALUES ('大阪','2018-4-22','ニッケル');
+INSERT INTO "Materials" (center,receive_date,material) VALUES ('大阪','2018-4-29','鉛');
+INSERT INTO "Materials" (center,receive_date,material) VALUES ('名古屋','2018-3-15','チタン');
+INSERT INTO "Materials" (center,receive_date,material) VALUES ('名古屋','2018-4-01','炭素鋼');
+INSERT INTO "Materials" (center,receive_date,material) VALUES ('名古屋','2018-4-24','炭素鋼');
+INSERT INTO "Materials" (center,receive_date,material) VALUES ('名古屋','2018-5-02','マグネシウム');
+INSERT INTO "Materials" (center,receive_date,material) VALUES ('名古屋','2018-5-10','チタン');
+INSERT INTO "Materials" (center,receive_date,material) VALUES ('福岡','2018-5-10','亜鉛');
+INSERT INTO "Materials" (center,receive_date,material) VALUES ('福岡','2018-5-28','錫');
+
+INSERT INTO "Items1" (item) VALUES ('ビール'),('紙オムツ'),('自転車');
+
+INSERT INTO "ShopItems" (shop,item) VALUES ('仙台','ビール');
+INSERT INTO "ShopItems" (shop,item) VALUES ('仙台','紙オムツ');
+INSERT INTO "ShopItems" (shop,item) VALUES ('仙台','自転車');
+INSERT INTO "ShopItems" (shop,item) VALUES ('仙台','カーテン');
+INSERT INTO "ShopItems" (shop,item) VALUES ('東京','ビール');
+INSERT INTO "ShopItems" (shop,item) VALUES ('東京','紙オムツ');
+INSERT INTO "ShopItems" (shop,item) VALUES ('東京','自転車');
+INSERT INTO "ShopItems" (shop,item) VALUES ('大阪','テレビ');
+INSERT INTO "ShopItems" (shop,item) VALUES ('大阪','紙オムツ');
+INSERT INTO "ShopItems" (shop,item) VALUES ('大阪','自転車');

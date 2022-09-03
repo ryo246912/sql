@@ -124,3 +124,46 @@ CREATE TABLE SalesHistory(
     item_no INTEGER NOT NULL,
     quantity INTEGER NOT NULL
 );
+
+CREATE TABLE Graduates(
+    name TEXT NOT NULL,
+    income INTEGER NOT NULL
+);
+
+CREATE TABLE Nulltbl(
+    col_1 TEXT
+);
+
+CREATE TABLE Students(
+    student_id INTEGER NOT NULL,
+    dpt TEXT NOT NULL,
+    sbmt_date DATE
+);
+
+CREATE TABLE TestResults(
+    student_id INTEGER NOT NULL,
+    class TEXT NOT NULL,
+    sex TEXT NOT NULL,
+    score INTEGER NOT NULL
+);
+
+CREATE TABLE Teams(
+    member TEXT NOT NULL,
+    team_id INTEGER NOT NULL,
+    status TEXT NOT NULL
+);
+
+CREATE TABLE Materials(
+    center TEXT NOT NULL,
+    receive_date DATE NOT NULL,
+    material TEXT NOT NULL
+);
+
+CREATE TABLE Items1(
+    item TEXT NOT NULL
+);
+
+CREATE TABLE ShopItems(
+    shop TEXT NOT NULL,
+    item TEXT NOT NULL
+);
