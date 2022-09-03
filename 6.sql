@@ -9,6 +9,9 @@ GROUP BY
 HAVING
   COUNT(*) <> MAX(seq);
 
+-- 歯抜けの最小値を求める
+-- ・NULLが入っている場合は正しくならない
+-- ・1が抜けている場合は適切に出て来ない
 SELECT
   MIN(seq + 1) AS GAP
 FROM
