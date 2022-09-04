@@ -347,4 +347,101 @@ SELECT
   I.item
 FROM
   "ShopItems" AS SI
+  LEFT OUTER JOIN "Items1" AS I ON SI.item = I.item;
+
+-- 演習6-1
+SELECT
+  (
+    CASE
+      WHEN COUNT(gap) = 1 THEN '歯抜けあり'
+      ELSE '歯抜けなし'
+    END
+  ) AS g
+FROM
+  (
+    SELECT
+      '歯抜けあり' AS gap
+    FROM
+      "SeqTbl"
+    GROUP BY
+      gap
+    HAVING
+      COUNT(*) <> MAX(seq)
+  );
+
+-- よりシンプルな書き方
+SELECT
+  CASE
+    WHEN COUNT(*) <> MAX(seq) THEN '歯抜けあり'
+    ELSE '歯抜けなし'
+  END AS gap
+FROM
+  "SeqTbl";
+
+-- 演習6-2:全員9月中に提出中の学部
+SELECT
+  dpt
+FROM
+  "Students"
+GROUP BY
+  dpt
+HAVING
+  sbmt_date >= '2018-09-01'
+  AND sbmt_date < '2018-10-01'
+  AND COUNT(*) = COUNT(sbmt_date);
+
+-- 他の書き方
+SELECT
+  dpt
+FROM
+  "Students"
+GROUP BY
+  dpt
+HAVING
+  COUNT(*) = SUM(
+    CASE
+      WHEN sbmt_date BETWEEN '2018-09-01'
+      AND '2018-09-30' THEN 1
+      ELSE 0
+    END
+  );
+
+-- 演習6-2:全員9月中に提出中の学部2-EXISTSを用いる
+SELECT
+  dpt
+FROM
+  "Students" AS S1
+WHERE
+  NOT EXISTS (
+    SELECT
+      *
+    FROM
+      "Students" AS S2
+    WHERE
+      S2.dpt = S1.dpt
+      AND (
+        S2.sbmt_date < '2018-09-01'
+        OR S2.sbmt_date IS NULL
+      )
+      OR S2.dpt = S1.dpt
+      AND (
+        S2.sbmt_date >= '2018-10-01'
+        OR S2.sbmt_date IS NULL
+      )
+  );
+
+-- 演習6-3
+SELECT
+  SI.shop,
+  COUNT(I.item) AS my_item_cnt,
+  (
+    SELECT
+      COUNT(*)
+    FROM
+      "Items1"
+  ) - COUNT(I.item) AS diff_cnt
+FROM
+  "ShopItems" AS SI
   LEFT OUTER JOIN "Items1" AS I ON SI.item = I.item
+GROUP BY
+  SI.shop;
